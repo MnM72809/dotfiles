@@ -1,0 +1,21 @@
+# Secrets
+.ssh/
+.gnupg/
+.env
+
+# Cache / runtime
+.cache/
+.local/share/recently-used.xbel
+
+# Matugen wallpaper colors
+colors.conf
+colors.css
+
+# Nested git repo
+matugen/matugen-themes/
+
+# messy files
+*.bak.*
+*.bak
+*.old
+*.tmp

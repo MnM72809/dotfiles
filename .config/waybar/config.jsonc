@@ -1,0 +1,210 @@
+// -*- mode: jsonc -*-
+{
+    "height": 35,
+    "width": 1900,
+    "spacing": 0,
+    "margin-top": 12,
+
+    "modules-left": [
+		"custom/media",
+        "privacy"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "wireplumber",
+        "network",
+        "cpu",
+        "memory",
+        "tray",
+        "custom/power",
+        "clock"
+    ],
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "empty": "",
+            "default": ""
+        },
+	    "persistent-workspaces": {
+            "*": 5,
+	    }
+    },
+
+    "hyprland/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "hyprland/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+
+    "tray": {
+        "spacing": 10
+    },
+
+    "clock": {
+        "tooltip-format": "<big>{:%d %B}</big>\n\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%d/%m/%Y}"
+    },
+
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "  {}%"
+    },
+
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        //"format-ethernet": "",
+        "format-ethernet": "",
+		"tooltip-format": "{ifname} via {gwaddr} ",
+		//"tooltip-format": "{ipaddr}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+		"format-alt": "{ifname}: {ipaddr}/{cidr}"
+        //"format-alt": "{ipaddr}"
+    },
+
+    "wireplumber": {
+        "format": "  {volume}",
+        "scroll-step": 2.0,
+        "format-muted": "󰝟   {volume}",
+        "on-click": "~/.config/waybar/scripts/audio-popup.sh"
+    },
+
+    "privacy": {
+        "icon-spacing": 4,
+        "icon-size": 17,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-out",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-in",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            }
+        ],
+        "ignore-monitor": true,
+        "ignore": [
+            {
+                "type": "audio-in",
+                "name": "cava"
+            },
+            {
+                "type": "screenshare",
+                "name": "obs"
+            }
+        ]
+    },
+
+    "custom/media": {
+        "format": "{icon} {text}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null",
+        "on-click": "hyprctl dispatch exec '[float; size 400 500; move 970 45] alacritty -e nmtui connect'",
+
+		"cursor": false // Gives warning but works regardless, idk
+    },
+
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "wlogout"
+    }
+
+    //"custom/power": {
+        //"format": "⏻",
+        //"tooltip": false,
+        //"menu": "on-click",
+        //"menu-file": "$HOME/.config/waybar/power_menu.xml",
+        //"menu-actions": {
+            //"shutdown": "/home/moriaan/.local/bin/power-menu.sh shutdown",
+            //"reboot": "/home/moriaan/.local/bin/power-menu.sh reboot",
+            //"suspend": "/home/moriaan/.local/bin/power-menu.sh suspend",
+            //"hibernate": "/home/moriaan/.local/bin/power-menu.sh hibernate",
+            //"windows": "/home/moriaan/.local/bin/power-menu.sh windows",
+            //"windows_hibernate": "/home/moriaan/.local/bin/power-menu.sh windows_hibernate",
+            //"exit": "/home/moriaan/.local/bin/power-menu.sh exit"
+        //}
+    //}
+
+    // ------------------------------------------------------------
+    // Optional settings moved here for clarity.
+    // Uncomment and move into the relevant module block if needed.
+    // ------------------------------------------------------------
+
+    // General:
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+
+    // "hyprland/workspaces": {
+    //   "format": "{name}: {icon}",
+    //   "format-icons": {
+    //     "1": "",
+    //     "2": "",
+    //     "3": "",
+    //     "4": "",
+    //     "5": ""
+    //   },
+    //   "persistent-workspaces": {
+    //     "*": 5, // 5 workspaces by default on every monitor
+    //     "HDMI-A-1": 3 // but only three on HDMI-A-1
+    //   }
+    // }
+
+    // "keyboard-state": {
+    //   "numlock": true,
+    //   "capslock": true,
+    //   "format": " {icon}  {name} ",
+    //   "format-icons": {
+    //     "locked": "",
+    //     "unlocked": ""
+    //   }
+    // }
+    // Add "keyboard-state" to "modules-right" where you want it displayed.
+
+    // "tray": {
+    //   "icon-size": 21,
+    //   "icons": {
+    //     "blueman": "bluetooth",
+    //     "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+    //   }
+    // }
+
+    // "clock": {
+    //   "timezone": "America/New_York"
+    // }
+
+    // "network": {
+    //   "interface": "wlp2*", // (Optional) To force the use of this interface
+    //   "format-ethernet": "{ipaddr}/{cidr} "
+    // }
+
+    // "custom/media": {
+    //   "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    // }
+}
