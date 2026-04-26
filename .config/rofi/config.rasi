@@ -1,4 +1,4 @@
-@import "colors.rasi"
+@import "colors.rasi" /* Matugen colors */
 @import "theme.rasi"
 
 /**
