@@ -39,11 +39,16 @@ post_hook = 'pkill -SIGUSR2 waybar'
 [templates.spotify]
 input_path = './templates/spicetify.ini'
 output_path = '~/.config/spicetify/Themes/Sleek/color.ini'
-post_hook = 'spicetify watch -s 2>&1 | sed "/Reloaded Spotify/q"'
+post_hook = 'if hyprctl clients | grep -q Spotify; then spicetify watch -s 2>&1 | sed "/Reloaded Spotify/q"; fi' # Spotify will still open a window if there is none due to waybar reloading (only when spotify is in tray)
 
 [templates.rofi]
 input_path = './templates/rofi-colors.rasi'
 output_path = '~/.config/rofi/colors.rasi'
+
+[templates.mako]
+input_path = './templates/mako'
+output_path = '~/.config/mako/config'
+post_hook = 'makoctl reload'
 
 
 
