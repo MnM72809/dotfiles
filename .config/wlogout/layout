@@ -1,0 +1,37 @@
+
+{
+    "label" : "suspend",
+    "action" : "/home/moriaan/.local/bin/power-menu.sh suspend",
+    "text" : "Suspend",
+    "keybind" : "u"
+}
+{
+    "label" : "hibernate",
+    "action" : "/home/moriaan/.local/bin/power-menu.sh hibernate",
+    "text" : "Hibernate",
+    "keybind" : "h"
+}
+{
+    "label" : "logout",
+    "action" : "/home/moriaan/.local/bin/power-menu.sh exit",
+    "text" : "Exit Hyprland",
+    "keybind" : "e"
+}
+{
+    "label" : "shutdown",
+    "action" : "/home/moriaan/.local/bin/power-menu.sh shutdown",
+    "text" : "Shutdown",
+    "keybind" : "s"
+}
+{
+    "label" : "reboot",
+    "action" : "/home/moriaan/.local/bin/power-menu.sh reboot",
+    "text" : "Reboot",
+    "keybind" : "r"
+}
+{
+	"label" : "windows",
+	"action" : "/home/moriaan/.local/bin/power-menu.sh windows",
+	"text" : "Reboot to Windows",
+	"keybind" : "w"
+}

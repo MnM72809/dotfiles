@@ -1,0 +1,66 @@
+@import "colors.css";
+
+* {
+    font-family: "SF Pro Display", "JetBrains Mono", "Sans serif", monospace;
+    background: transparent;
+}
+
+window {
+    background-color: alpha(@shadow, 0.50);
+}
+
+button {
+    color: @foreground;
+    background-color: alpha(@surface, 0.95);
+    border: 2px solid @outline;
+    border-radius: 12px;
+    background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 35%;
+    margin: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+
+button:hover {
+    background-color: @surface_container;
+    color: @primary;
+    border-color: @primary;
+	outline-style: none;
+}
+
+button:focus,
+button:active {
+	outline-style: none;
+	border-color: @primary;
+	color: @primary;
+	background-color: @surface_container_lowest;
+	/*font-weight: 900;*/
+}
+
+#logout   { background-image: image(url("/home/moriaan/.config/wlogout/icons/logout.png")); }
+#suspend  { background-image: image(url("/home/moriaan/.config/wlogout/icons/suspend.png")); }
+#hibernate{ background-image: image(url("/home/moriaan/.config/wlogout/icons/hibernate.png")); }
+#shutdown { background-image: image(url("/home/moriaan/.config/wlogout/icons/shutdown.png")); }
+#reboot   { background-image: image(url("/home/moriaan/.config/wlogout/icons/reboot.png")); }
+#windows  { background-image: image(url("/home/moriaan/.config/wlogout/icons/windows.png")); }
+
+/*#shutdown { border-color: alpha(@error, 0.5); }*/
+/*#shutdown:hover { background-color: @error_container; color: @error-fg; border-color: @error; }*/
+
+/*#reboot:hover { background-color: alpha(@error, 0.7); color: @error-fg; }*/
+
+/*#lock     { background-image: image(url("/usr/share/wlogout/icons/lock.png")); }*/
+
+/*
+
+{
+    "label" : "lock",
+    "action" : "/home/moriaan/.local/bin/power-menu.sh lock",
+    "text" : "Lock",
+    "keybind" : "l"
+}
+
+*/

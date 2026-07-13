@@ -1,13 +1,15 @@
 // -*- mode: jsonc -*-
 {
-    "height": 35,
-    "width": 1900,
+    "height": 48,
+    "width": 2520,
     "spacing": 0,
     "margin-top": 12,
+	"margin-bottom": 0,
 
     "modules-left": [
 		//"custom/media",
-        "privacy"
+        "privacy",
+		"custom/minecraft"
     ],
     "modules-center": [
         "hyprland/workspaces"
@@ -28,9 +30,9 @@
             "empty": "",
             "default": ""
         },
-	    "persistent-workspaces": {
-            "*": 5,
-	    }
+		"persistent-workspaces": {
+			"*": 4,
+		}
     },
 
     "hyprland/mode": {
@@ -134,7 +136,17 @@
         "format": "⏻",
         "tooltip": false,
         "on-click": "wlogout"
-    }
+    },
+
+
+	"custom/minecraft": {
+		"format": "{text}",
+		"return-type": "json",
+		"exec": "$HOME/.config/waybar/scripts/mc-server.sh",
+		"interval": 30,
+		"on-click": "ssh asm 'sudo systemctl start minecraft.service'",
+		"on-click-right": "ssh asm 'sudo systemctl stop minecraft.service'"
+	}
 
     //"custom/power": {
         //"format": "⏻",

@@ -1,11 +1,11 @@
 @import "colors.css";
-@define-color blurred rgba(0, 0, 0, 0.01);
+@define-color blurred alpha(@surface, 0.5);
 
 
 /* Core */
 * {
     font-family: 'inter', 'JetBrainsMono Nerd Font Propo', FontAwesome, sans-serif;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: bold;
     border-radius: 10px;
 }
@@ -24,8 +24,8 @@ window#waybar.hidden {
 /* Buttons */
 button {
     /*box-shadow: inset 0 -3px transparent;*/
-    border: none;
-    border-radius: 0;
+    /* border: none;
+    border-radius: 0; */
 }
     
 button:hover {
@@ -35,17 +35,17 @@ button:hover {
 
 /* Workspaces */
 #workspaces {
-	background-color: alpha(@surface, 0.2);
+	background-color: @blurred;
 	border-radius: 7px;
 	padding: 2px 5px ;
-	border: 2px solid alpha(@surface, 0.2);
+	border: 2px solid @blurred;
 }
 
 #workspaces button {
     padding: 2px 5px;
     margin: 2px 3px;
-    background-color: @blurred;
-	color: alpha(@on_surface, 0.8);
+    /* background-color: @blurred; */
+	color: @on_surface;
     border-radius: 7px;
 }
 
@@ -101,13 +101,16 @@ button:hover {
 #power-profiles-daemon,
 #mpd,
 #custom-power,
-#privacy {
+#privacy,
+#custom-minecraft {
     padding: 0 20px;
-    color: @on_surface;
+    color: #ffffff;
     margin: 0 6px;
     /*background-color: @surface_container;*/
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: @blurred;
     opacity: 0.7;
+	border: 2px solid alpha(@on_primary_fixed, 0.4);
+	text-shadow: 0px 0px 10px alpha(@shadow, 0.5);
 }
 
 #window,
@@ -131,7 +134,7 @@ button:hover {
     }
 }
 
-/* Using steps() instead of linear as a timing function to limit cpu usage */
+/* // Using steps() instead of linear as a timing function to limit cpu usage
 #battery.critical:not(.charging) {
     background-color: #f53c3c;
     color: #ffffff;
@@ -159,7 +162,7 @@ button:hover {
 #power-profiles-daemon.power-saver {
     background-color: #2ecc71;
     color: #000000;
-}
+} */
 
 /* Module-specific */
 label:focus {

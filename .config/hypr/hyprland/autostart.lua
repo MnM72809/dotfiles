@@ -1,0 +1,33 @@
+-------------------
+---- AUTOSTART ----
+-------------------
+
+hl.on("hyprland.start", function()
+    hl.exec_cmd("hyprlock -c /home/moriaan/.config/hypr/hyprlock.conf --grace 0; ~/.local/bin/rotate_wallpaper.sh --keep-wallpaper")
+    hl.exec_cmd("waybar")
+    hl.exec_cmd("awww-daemon")
+    hl.exec_cmd("solaar --window=hide")
+    hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
+    hl.exec_cmd("swayosd-server")
+    hl.exec_cmd("systemctl --user start sunshine")
+    hl.exec_cmd("hypridle")
+    hl.exec_cmd("hyprsunset")
+    --hl.exec_cmd("spotify", { workspace = "special:spotify silent" })
+	--hl.exec_cmd("spotify", { workspace = "special:spotify", silent = true })
+	hl.exec_cmd("spotify", { workspace = "special:spotify" })
+	hl.exec_cmd("spicetify update &")
+    hl.exec_cmd("/home/moriaan/.local/bin/rotate_wallpaper.sh > /tmp/rotate_wallpaper.log 2>&1")
+    hl.exec_cmd("cliphist wipe")
+    hl.exec_cmd("wl-paste --type text --watch cliphist store")
+    hl.exec_cmd("wl-paste --type image --watch cliphist store")
+    hl.exec_cmd("kdeconnectd")
+    hl.exec_cmd("nm-applet")
+	hl.exec_cmd("blueman-applet")
+    hl.exec_cmd("steam -silent")
+	hl.exec_cmd("sleep 1; ~/.local/bin/rotate_wallpaper.sh --keep-wallpaper > /tmp/rotate_wallpaper.log")
+	hl.dsp.focus({ workspace = 1 })
+	hl.exec_cmd("sleep 1; hyprctl dispatch 'hl.dsp.focus({ workspace = 1 })'")
+	hl.exec_cmd("/home/moriaan/.config/hypr/toggle_hypr-cava-visualizer.sh")
+	hl.exec_cmd("sleep 4; ~/.local/bin/rotate_wallpaper.sh --keep-wallpaper > /tmp/rotate_wallpaper.log")
+end)
+
