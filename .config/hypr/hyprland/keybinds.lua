@@ -3,6 +3,8 @@
 ---------------------
 
 local mainMod = "SUPER"
+menu = "rofi -show drun"
+runmenu = "rofi -show run"
 
 -- Normal binds
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
@@ -23,11 +25,18 @@ hl.bind(mainMod .. " + CTRL + SHIFT + S", hl.dsp.exec_cmd("grimblast save screen
 
 -- Rofi binds
 local kill_rofi = "pkill rofi || "
-hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(kill_rofi .. menu))
-hl.bind("XF86Tools", hl.dsp.exec_cmd(kill_rofi .. menu))
+hl.bind(
+	mainMod .. " + SPACE",
+	hl.dsp.exec_cmd(kill_rofi .. "rofi -show drun -theme /home/moriaan/.config/rofi/theme-drun.rasi")
+)
+hl.bind("XF86Tools", hl.dsp.exec_cmd(kill_rofi .. "rofi -show drun  -theme /home/moriaan/.config/rofi/theme-drun.rasi"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(kill_rofi .. "/home/moriaan/.config/waybar/scripts/rofi-web.sh"))
-hl.bind("XF86Launch5", hl.dsp.exec_cmd(kill_rofi .. "/home/moriaan/.config/waybar/scripts/rofi-web.sh"))
-hl.bind("XF86Launch5", hl.dsp.exec_cmd("pkill rofi; zen-browser"), { long_press = true })
+hl.bind(
+	"XF86Launch5",
+	hl.dsp.exec_cmd(kill_rofi .. "/home/moriaan/.config/waybar/scripts/rofi-web.sh"),
+	{ long_press = true }
+)
+hl.bind("XF86Launch5", hl.dsp.exec_cmd(kill_rofi .. "zen-browser"), { long_press = false })
 hl.bind(mainMod .. " + Tab", hl.dsp.exec_cmd(kill_rofi .. "rofi -show window"))
 hl.bind("XF86Launch6", hl.dsp.exec_cmd(kill_rofi .. "rofi -show window"))
 hl.bind(mainMod .. " + CTRL + V", hl.dsp.exec_cmd(kill_rofi .. "/home/moriaan/.config/waybar/scripts/clipboard.sh"))
@@ -36,19 +45,37 @@ hl.bind(mainMod .. " + CTRL + SPACE", hl.dsp.exec_cmd(kill_rofi .. runmenu))
 
 -- Theme binds
 -- picker
-hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(kill_rofi .. "~/.local/bin/rotate_wallpaper.sh --picker > /tmp/rotate_wallpaper.log"))
-hl.bind(mainMod .. " + XF86Tools", hl.dsp.exec_cmd(kill_rofi .. "~/.local/bin/rotate_wallpaper.sh --picker > /tmp/rotate_wallpaper.log"))
+hl.bind(
+	mainMod .. " + A",
+	hl.dsp.exec_cmd(
+		kill_rofi .. "~/.local/bin/theme_handler.sh --wallpaper --picker --matugen > /tmp/theme_handler.log"
+	)
+)
+hl.bind(
+	mainMod .. " + XF86Tools",
+	hl.dsp.exec_cmd(
+		kill_rofi .. "~/.local/bin/theme_handler.sh --wallpaper --picker --matugen > /tmp/theme_handler.log"
+	)
+)
 -- keep wallpaper
-hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd("~/.local/bin/rotate_wallpaper.sh --keep-wallpaper > /tmp/rotate_wallpaper.log"))
-hl.bind(mainMod .. " + XF86Launch6", hl.dsp.exec_cmd("~/.local/bin/rotate_wallpaper.sh --keep-wallpaper > /tmp/rotate_wallpaper.log"))
+hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd("~/.local/bin/theme_handler.sh --matugen > /tmp/theme_handler.log"))
+hl.bind(
+	mainMod .. " + XF86Launch6",
+	hl.dsp.exec_cmd("~/.local/bin/theme_handler.sh --matugen > /tmp/theme_handler.log")
+)
 -- auto rotate
-hl.bind(mainMod .. " + XF86Launch5", hl.dsp.exec_cmd("~/.local/bin/rotate_wallpaper.sh > /tmp/rotate_wallpaper.log"))
-hl.bind(mainMod .. " + CTRL + A", hl.dsp.exec_cmd("~/.local/bin/rotate_wallpaper.sh > /tmp/rotate_wallpaper.log"))
+hl.bind(
+	mainMod .. " + XF86Launch5",
+	hl.dsp.exec_cmd("~/.local/bin/theme_handler.sh --wallpaper --matugen > /tmp/theme_handler.log")
+)
+hl.bind(
+	mainMod .. " + CTRL + A",
+	hl.dsp.exec_cmd("~/.local/bin/theme_handler.sh --wallpaper --matugen > /tmp/theme_handler.log")
+)
 
 -- audio visualizer
 hl.bind(mainMod .. " + XF86Launch8", hl.dsp.exec_cmd("~/.config/hypr/toggle_hypr-cava-visualizer.sh"))
 --hl.bind(mainMod .. " + XF86Launch8", hl.dsp.exec_cmd("notify-send test"))
-
 
 hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("pidof wlogout || wlogout"))
 
@@ -94,13 +121,13 @@ hl.bind("SHIFT + XF86AudioMicMute", hl.dsp.window.move({ workspace = 3 }))
 hl.bind("SHIFT + XF86TouchpadToggle", hl.dsp.window.move({ workspace = 4 }))
 
 -- Scroll through existing workspaces with mainMod + scroll
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + SHIFT + mouse_down", hl.dsp.window.move({ workspace = "e-1" }))
-hl.bind(mainMod .. " + SHIFT + mouse_up", hl.dsp.window.move({ workspace = "e+1" }))
+hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + SHIFT + mouse_up", hl.dsp.window.move({ workspace = "e-1" }))
+hl.bind(mainMod .. " + SHIFT + mouse_down", hl.dsp.window.move({ workspace = "e+1" }))
 
 -- Spotify workspace
-hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("spotify"))
+hl.bind("F10", hl.dsp.workspace.toggle_special("spotify"))
 hl.bind("XF86Launch8", hl.dsp.workspace.toggle_special("spotify"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:spotify" }))
 
@@ -108,16 +135,15 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:spo
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag())
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize())
 
-
 -- Zoom in
-hl.bind(mainMod .. " + CTRL + mouse_down", function()
-    local zoom = hl.get_config("cursor.zoom_factor")
-    hl.config({ cursor = { zoom_factor = zoom * math.sqrt(2) } })
+hl.bind(mainMod .. " + CTRL + mouse_up", function()
+	local zoom = hl.get_config("cursor.zoom_factor")
+	hl.config({ cursor = { zoom_factor = zoom * math.sqrt(2) } })
 end)
 -- Zoom out (min 1.0)
-hl.bind(mainMod .. " + CTRL + mouse_up", function()
-    local zoom = hl.get_config("cursor.zoom_factor")
-    hl.config({ cursor = { zoom_factor = math.max(zoom / math.sqrt(2), 1) } })
+hl.bind(mainMod .. " + CTRL + mouse_down", function()
+	local zoom = hl.get_config("cursor.zoom_factor")
+	hl.config({ cursor = { zoom_factor = math.max(zoom / math.sqrt(2), 1) } })
 end)
 
 --# Laptop multimedia keys for volume and LCD brightness
@@ -129,25 +155,55 @@ end)
 --bindel = ,XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-
 
 -- Multimedia keys for volume and LCD brightness
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("swayosd-client --output-volume=+1"), { locked = true, repeating = true, ignore_mods = false })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("swayosd-client --output-volume=-1"), { locked = true, repeating = true, ignore_mods = false })
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("swayosd-client --output-volume=mute-toggle"), { locked = true, repeating = true })
+hl.bind(
+	"XF86AudioRaiseVolume",
+	hl.dsp.exec_cmd("swayosd-client --output-volume=+1"),
+	{ locked = true, repeating = true, ignore_mods = false }
+)
+hl.bind(
+	"XF86AudioLowerVolume",
+	hl.dsp.exec_cmd("swayosd-client --output-volume=-1"),
+	{ locked = true, repeating = true, ignore_mods = false }
+)
+hl.bind(
+	"XF86AudioMute",
+	hl.dsp.exec_cmd("swayosd-client --output-volume=mute-toggle"),
+	{ locked = true, repeating = true }
+)
 --bindel = ,XF86AudioMicMute, exec, swayosd-client --input-volume=mute-toggle
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
 
-hl.bind(mainMod .. " + XF86AudioRaiseVolume", hl.dsp.exec_cmd("hyprctl hyprsunset gamma +1; swayosd-client --brightness $(hyprctl hyprsunset gamma)"), { locked = true, repeating = true, ignore_mods = false })
-hl.bind(mainMod .. " + XF86AudioLowerVolume", hl.dsp.exec_cmd("hyprctl hyprsunset gamma -1; swayosd-client --brightness $(hyprctl hyprsunset gamma)"), { locked = true, repeating = true, ignore_mods = false })
+hl.bind(
+	mainMod .. " + XF86AudioRaiseVolume",
+	hl.dsp.exec_cmd("hyprctl hyprsunset gamma +1; swayosd-client --brightness $(hyprctl hyprsunset gamma)"),
+	{ locked = true, repeating = true, ignore_mods = false }
+)
+hl.bind(
+	mainMod .. " + XF86AudioLowerVolume",
+	hl.dsp.exec_cmd("hyprctl hyprsunset gamma -1; swayosd-client --brightness $(hyprctl hyprsunset gamma)"),
+	{ locked = true, repeating = true, ignore_mods = false }
+)
 
-hl.bind(mainMod .. " + XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute -p $(hyprctl activewindow -j | jq '.pid') toggle"))
+hl.bind(
+	mainMod .. " + XF86AudioMute",
+	hl.dsp.exec_cmd("wpctl set-mute -p $(hyprctl activewindow -j | jq '.pid') toggle")
+)
 
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("swayosd-client --playerctl=next"), { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("swayosd-client --playerctl=play-pause"), { locked = true })
-hl.bind("SHIFT + XF86AudioPause", hl.dsp.exec_cmd("swayosd-client --playerctl=play-pause --player=spotify"), { locked = true })
+hl.bind(
+	"SHIFT + XF86AudioPause",
+	hl.dsp.exec_cmd("swayosd-client --playerctl=play-pause --player=spotify"),
+	{ locked = true }
+)
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("swayosd-client --playerctl=play-pause"), { locked = true })
-hl.bind("SHIFT + XF86AudioPlay", hl.dsp.exec_cmd("swayosd-client --playerctl=play-pause --player=spotify"), { locked = true })
+hl.bind(
+	"SHIFT + XF86AudioPlay",
+	hl.dsp.exec_cmd("swayosd-client --playerctl=play-pause --player=spotify"),
+	{ locked = true }
+)
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("swayosd-client --playerctl=prev"), { locked = true })
-
 
 hl.bind("CAPS_LOCK", hl.dsp.exec_cmd("sleep 0.11; swayosd-client --caps-lock"), { non_consuming = true })
 

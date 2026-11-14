@@ -82,8 +82,10 @@ hl.layer_rule({
     match = {
         namespace = "rofi",
     },
-	dim_around = true,
+	-- dim_around = true,
     animation = "popin",
+	blur = true,
+	ignore_alpha = 0,
 })
 
 hl.layer_rule({

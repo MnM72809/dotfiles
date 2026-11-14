@@ -17,9 +17,10 @@
     "modules-right": [
         "wireplumber",
         "network",
-        "cpu",
-        "memory",
+        //"cpu",
+        //"memory",
         "tray",
+		"idle_inhibitor",
         "custom/power",
         "clock"
     ],
@@ -146,6 +147,19 @@
 		"interval": 30,
 		"on-click": "ssh asm 'sudo systemctl start minecraft.service'",
 		"on-click-right": "ssh asm 'sudo systemctl stop minecraft.service'"
+	},
+
+	"idle_inhibitor": {
+		//"format": "{icon} {timeleft}/{timeout}",
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		},
+		//"tooltip-format-activated": "",
+		"timeout": 480,
+		"dynamic-timeouts": true,
+		//"timeout-step": 10
 	}
 
     //"custom/power": {

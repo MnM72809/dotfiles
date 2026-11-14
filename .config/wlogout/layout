@@ -1,8 +1,8 @@
 
 {
     "label" : "suspend",
-    "action" : "/home/moriaan/.local/bin/power-menu.sh suspend",
-    "text" : "Suspend",
+    "action" : "/home/moriaan/.local/bin/power-menu.sh sleep",
+    "text" : "Sleep",
     "keybind" : "u"
 }
 {

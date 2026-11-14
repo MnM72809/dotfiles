@@ -44,4 +44,9 @@
     surface-container: {{colors.surface_container.default.hex}};
     surface-container-high: {{colors.surface_container_high.default.hex}};
     surface-container-highest: {{colors.surface_container_highest.default.hex}};
+
+    surface-transparent: {{colors.surface.default.hex}}10;
+    on-secondary-fixed-transparent: {{colors.on_secondary_fixed.default.hex}}70;
+	surface-container-high-transparent: {{colors.surface_container_high.default.hex}}70;
+	surface-container-low-transparent: {{colors.surface_container_low.default.hex}}70;
 }

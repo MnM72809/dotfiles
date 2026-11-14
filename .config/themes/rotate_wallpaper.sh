@@ -1,8 +1,11 @@
 #!/bin/bash
 
-set -xeuo pipefail
+set -euo pipefail
 
 echo
+
+echo "WARNING: THIS SCRIPT IS DEPRECATED, USE THEME_HANDLER.SH INSTEAD"
+notify-send "Rotate_wallpaper.sh was used, but is deprecated."
 
 ########################################
 # Configuration
@@ -31,6 +34,13 @@ else
 	fi
 fi
 
+if [[ $# -eq 2 && $2 == "--no-transition" ]]; then
+	echo "No transition requested"
+	transition_type="none"
+else
+	transition_type="random"
+fi
+
 echo "Selected image: $image"
 
 ########################################
@@ -49,7 +59,7 @@ ln -sfn "$image" "$CURRENT_LINK"
 
 echo Applying wallpaper
 
-awww img "$CURRENT_LINK" -t random --transition-fps 180
+awww img "$CURRENT_LINK" -t $transition_type --transition-fps 180 &
 
 echo Running matugen =====================
 

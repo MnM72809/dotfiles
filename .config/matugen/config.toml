@@ -43,7 +43,7 @@ post_hook = 'pkill -SIGUSR2 waybar'
 [templates.spotify]
 input_path = './templates/spicetify.ini'
 output_path = '~/.config/spicetify/Themes/Sleek/color.ini'
-post_hook = 'if hyprctl clients | grep -q Spotify; then spicetify watch -s 2>&1 | sed "/Reloaded Spotify/q"; fi' # Spotify will still open a window if there is none due to waybar reloading (only when spotify is in tray)
+#post_hook = 'if hyprctl clients | grep -q Spotify; then spicetify watch -s 2>&1 | sed "/Reloaded Spotify/q"; fi' # Spotify will still open a window if there is none due to waybar reloading (only when spotify is in tray)
 
 [templates.rofi]
 input_path = './templates/rofi-colors.rasi'
@@ -81,3 +81,8 @@ output_path = "~/.zen/wn2hpci2.Default (release)/chrome/colors.css"
 input_path  = '~/.config/matugen/templates/led_strip.sh'
 output_path = '~/.cache/matugen/led_strip.sh'
 post_hook   = "hyprctl dispatch 'hl.dsp.exec_cmd(\"bash ~/.cache/matugen/led_strip.sh\")'"
+
+[templates.lenovo]
+input_path  = '~/.config/matugen/templates/lenovo.sh'
+output_path = '~/.cache/matugen/lenovo.sh'
+post_hook   = "hyprctl dispatch 'hl.dsp.exec_cmd(\"bash ~/.cache/matugen/lenovo.sh\")'"

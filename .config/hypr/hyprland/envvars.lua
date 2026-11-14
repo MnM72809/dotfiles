@@ -13,6 +13,7 @@ hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 
 -- Gemini said to use with AOC monitor
 hl.env("XDG_SESSION_TYPE", "wayland")
+hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("GBM_BACKEND", "nvidia-drm")
 
 -- Cursor theme

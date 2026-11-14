@@ -22,9 +22,9 @@ execute_action() {
       pkill -15 spotify
       hyprshutdown -p 'reboot'
       ;;
-    "suspend")
-      echo "Suspending..."
-      systemctl suspend
+    "sleep")
+	  echo "Sleeping (suspend-then-hibernate)..."
+      systemctl sleep
       ;;
     "hibernate")
       echo "Hibernating..."
@@ -59,7 +59,7 @@ if [ -z "$1" ]; then
   echo "  lock                - Locks the session"
   echo "  shutdown            - Shuts down the system"
   echo "  reboot              - Reboots the system"
-  echo "  suspend             - Suspends the system"
+  echo "  sleep               - Suspend-then-hibernate the system (systemd)"
   echo "  hibernate           - Hibernates the system"
   echo "  windows             - Reboots to Windows"
   echo "  windows_hibernate   - Hibernates, next boot is windows"

@@ -18,7 +18,7 @@ hl.monitor({
 	position = "auto",
 	scale = 1.0,
 	bitdepth = 10,
-	-- cm = "hdredid",
+	-- cm = "hdr",
 	cm = "auto",
 	sdrbrightness = 1.9,
 	sdrsaturation = 0.9,
